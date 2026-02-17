@@ -4,7 +4,7 @@ from flask import Flask, request
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters
 
-# Logging for debugging
+# Enable logging
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     level=logging.INFO
@@ -72,4 +72,5 @@ def webhook():
     return "ok"
 
 if __name__ == "__main__":
+    # Railway requires binding to 0.0.0.0 and PORT env
     flask_app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
